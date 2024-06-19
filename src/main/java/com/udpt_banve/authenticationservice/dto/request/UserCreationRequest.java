@@ -5,22 +5,23 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import jakarta.validation.constraints.Size;
+import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDate;
 
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserCreationRequest {
-    @NotEmpty
+
     @Size(min = 4, message = "INVALID_USERNAME")
     String username;
 
-    @NotEmpty
     @Size(min = 6, message = "INVALID_PASSWORD")
-    private String password;
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
-
+    String password;
+    String firstName;
+    String lastName;
+    LocalDate dob;
 }

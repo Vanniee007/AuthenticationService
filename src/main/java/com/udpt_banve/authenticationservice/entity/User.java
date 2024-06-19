@@ -1,26 +1,32 @@
 package com.udpt_banve.authenticationservice.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDate;
+import java.util.Set;
 
+import jakarta.persistence.*;
 
-@Setter
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 @Getter
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    String id;
+
     @Column(name = "username", unique = true, columnDefinition = "VARCHAR(255) COLLATE utf8mb4_unicode_ci")
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
+    String username;
+
+    String password;
+    String firstName;
+    LocalDate dob;
+    String lastName;
+    String role;
 
 }
